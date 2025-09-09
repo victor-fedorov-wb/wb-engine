@@ -12,7 +12,7 @@ env:
   github.ref: 0.1
 jobs:
   build-linux-packages:
-    runs-on: ubuntu-latest
+    runs-on: wb-Latitude
     steps:
       - uses: actions/checkout@v3
       - name: build script
