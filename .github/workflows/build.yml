@@ -9,7 +9,7 @@ env:
   MAINTAINER: '4mr https://github.com/4mr/wb-engine'
   DESC: 'WB Engine and HomeAssistant integration'
   DEPENDS: 'wb-mqtt-confed (>= 1.8.1), wb-rules (>= 2.11.4)'
-
+  github.ref: 0.1
 jobs:
   build-linux-packages:
     runs-on: ubuntu-latest
@@ -66,7 +66,7 @@ jobs:
           package_root: .debpkg
           maintainer: ${{ env.MAINTAINER }}
           depends: ${{ env.DEPENDS }}
-          version: ${{ github.ref }}
+          version: ${{ env.github.ref }}
           arch: armhf
           desc: ${{ env.DESC }}
       - name: Build arm64
@@ -77,7 +77,7 @@ jobs:
           package_root: .debpkg
           maintainer: ${{ env.MAINTAINER }}
           depends: ${{ env.DEPENDS }}
-          version: ${{ github.ref }}
+          version: ${{ env.github.ref }}
           arch: arm64
           desc: ${{ env.DESC }}
       - name: Rename files
@@ -104,8 +104,8 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tag_name: ${{ github.ref }}
-          release_name: ${{ github.ref }}
+          tag_name: ${{ env.github.ref }}
+          release_name: ${{ env.github.ref }}
           body: ''
           draft: false
           prerelease: false
