@@ -110,7 +110,7 @@ jobs:
           prerelease: false
 
   upload-linux-packages:
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     needs: create-release
     steps:
       - uses: actions/download-artifact@v4
