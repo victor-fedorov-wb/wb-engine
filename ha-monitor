@@ -120,7 +120,6 @@ class SimpleHAStatusMonitor:
         Main function in class
         :return:
         """
-        # Use actual callback API (v2)
         client = mqtt.Client()
         client.on_connect = self.on_connect
         client.on_message = self.on_message
