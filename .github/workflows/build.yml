@@ -22,7 +22,7 @@ jobs:
           mkdir -p .debpkg/usr/bin
           mkdir -p .debpkg/usr/share/wb-mqtt-confed/schemas
           mkdir -p .debpkg/etc/systemd/system
-          mkdir -p .debpkg/etc/systemd/ha-monitor.service.d
+          mkdir -p .debpkg/etc/systemd/system/ha-monitor.service.d
 
           cp devices.conf                   .debpkg/etc/wb-rules/wb-engine.devices.conf
           cp wb-engine-rule.js              .debpkg/etc/wb-rules/wb-engine.js
