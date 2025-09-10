@@ -143,7 +143,7 @@ class SimpleHAStatusMonitor:
 
 # Starting monitoring
 if __name__ == "__main__":
-    monitor = SimpleHAStatusMonitor(broker="192.168.88.99")
+    monitor = SimpleHAStatusMonitor()
     signal.signal(signal.SIGINT, monitor.signal_exit)
     signal.signal(signal.SIGTERM, monitor.signal_exit)
     monitor.start()
