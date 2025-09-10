@@ -11,7 +11,7 @@ env:
   DEPENDS: 'wb-mqtt-confed (>= 1.8.1), wb-rules (>= 2.11.4)'
 jobs:
   build-linux-packages:
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     steps:
       - uses: actions/checkout@v3
       - name: build script
@@ -90,7 +90,7 @@ jobs:
             ./*.deb
 
   create-release:
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     needs:
       - build-linux-packages
     steps:
@@ -103,14 +103,14 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tag_name: ${{ github.ref }}
-          release_name: ${{ github.ref }}
+          tag_name: "${{ github.ref }}-${{ github.sha }}"
+          release_name: "Release ${{ github.ref }}-${{ github.sha }}"
           body: ''
           draft: false
           prerelease: false
 
   upload-linux-packages:
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     needs: create-release
     steps:
       - uses: actions/download-artifact@v4
